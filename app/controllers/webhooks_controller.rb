@@ -15,6 +15,6 @@ class WebhooksController < ApplicationController
         params[:stream_identifier],
         data)
 
-    render nothing: true
+    head :ok
   end
 end
