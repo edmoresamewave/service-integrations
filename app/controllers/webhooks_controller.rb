@@ -9,12 +9,12 @@ class WebhooksController < ApplicationController
       data = params.as_json
     end
 
-    # WebhookWorker.perform_async(
-    #     params[:team_identifier],
-    #     params[:integration_name],
-    #     params[:stream_identifier],
-    #     data)
+    WebhookWorker.perform_async(
+        params[:team_identifier],
+        params[:integration_name],
+        params[:stream_identifier],
+        data)
 
-    render json: data
+    render nothing: true
   end
 end

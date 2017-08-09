@@ -3,10 +3,10 @@ class WebhookWorker
 
   def perform(team_identifier, integration_name, stream_identifier, data)
     # Do something
-    Webhook::Received.save(
-        team: team_identifier,
-        integration: integration_name,
-        stream: stream_identifier,
-        data: data)
+    Webhook.create(
+        team_identifier: team_identifier,
+        integration_name: integration_name,
+        stream_identifier: stream_identifier,
+        payload: data)
   end
 end
