@@ -9,11 +9,11 @@ class WebhooksController < ApplicationController
       data = params.as_json
     end
 
-    # Webhook::Received.save(
-    #     team: params[:team_identifier],
-    #     stream: params[:team_identifier],
-    #     integration: params[:integration_name],
-    #     data: data)
+    # WebhookWorker.perform_async(
+    #     params[:team_identifier],
+    #     params[:integration_name],
+    #     params[:stream_identifier],
+    #     data)
 
     render json: data
   end
