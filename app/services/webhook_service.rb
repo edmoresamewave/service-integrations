@@ -12,7 +12,7 @@ module WebhookService
       #           elsif @webook.is_pivotal?
       #             Integrations::PivotalTracker
       #           else
-      #             Integrations::PivotalTracker
+      #             Integrations::Base
       #           end
 
       Integrations::Github.process(@webhook)

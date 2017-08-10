@@ -6,7 +6,7 @@ class Webhook < ApplicationRecord
   # end
   #
   # def is_pivotal?
-  #   integration_name == 'pivotal_tracker'
+  #   integration_name == 'pivotal-tracker'
   # end
 
   private
