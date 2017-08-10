@@ -9,11 +9,17 @@ class WebhooksController < ApplicationController
              params.as_json
            end
 
+    # Capture Event Types for Integrations
+    headers = {
+        'X-Github-Event' => request.headers['X-Github-Event']
+    }
+
     if WebhookConfig.active(params[:stream_id]).present?
       WebhookWorker.perform_async(params[:team_id],
                                   params[:integration_id],
                                   params[:stream_id],
-                                  data)
+                                  data,
+                                  headers)
       head :ok
     else
       render plain: 'webhook configuration not found', status: 404
