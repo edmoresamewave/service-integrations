@@ -11,7 +11,7 @@ default: &default
 
 development:
   <<: *default
-  database: samewave
+  database: samewave_dev
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.

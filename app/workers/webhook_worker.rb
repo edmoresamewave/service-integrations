@@ -1,11 +1,11 @@
 class WebhookWorker
   include Sidekiq::Worker
 
-  def perform(team_identifier, integration_name, stream_identifier, data)
+  def perform(team_id, integration_id, stream_id, data)
     # Create Webhook
-    Webhook.create(team_identifier: team_identifier,
-                   integration_name: integration_name,
-                   stream_identifier: stream_identifier,
+    Webhook.create(team_id: team_id,
+                   integration_id: integration_id,
+                   stream_id: stream_id,
                    payload: data)
   end
 end

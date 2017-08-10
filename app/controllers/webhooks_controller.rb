@@ -10,9 +10,9 @@ class WebhooksController < ApplicationController
            end
 
     # TODO: Check if integration token (stream_identifier) is in config table, if not return error message.
-    WebhookWorker.perform_async(params[:team_identifier],
-                                params[:integration_name],
-                                params[:stream_identifier],
+    WebhookWorker.perform_async(params[:team_id],
+                                params[:integration_id],
+                                params[:stream_id],
                                 data)
 
     head :ok
