@@ -9,12 +9,15 @@ class WebhooksController < ApplicationController
              params.as_json
            end
 
-    # TODO: Check if integration token (stream_identifier) is in config table, if not return not found.
-    WebhookWorker.perform_async(params[:team_id],
-                                params[:integration_id],
-                                params[:stream_id],
-                                data)
+    if WebhookConfig.active(params[:stream_id]).present?
+      WebhookWorker.perform_async(params[:team_id],
+                                  params[:integration_id],
+                                  params[:stream_id],
+                                  data)
+      head :ok
+    else
+      render plain: 'webhook configuration not found', status: 404
+    end
 
-    head :ok
   end
 end

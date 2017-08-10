@@ -17,7 +17,6 @@ ActiveRecord::Schema.define(version: 20170810120356) do
 
   create_table "webhook_configs", force: :cascade do |t|
     t.string "team_id"
-    t.string "string"
     t.string "integration_id"
     t.string "stream_id"
     t.string "url"
