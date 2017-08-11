@@ -13,6 +13,6 @@ class WebhookConfigsController < ApplicationController
   private
 
   def config_params
-    params.permit(:team_id, :integration_id, :stream_id, :url, :active)
+    params.permit(:team_id, :integration_id, :stream_id, :url, :post_as, :active)
   end
 end

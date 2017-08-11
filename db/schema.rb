@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170810154219) do
+ActiveRecord::Schema.define(version: 20170811085644) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "comments", force: :cascade do |t|
+    t.string "creator_id"
+    t.string "stream_id"
+    t.text "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "webhook_configs", force: :cascade do |t|
     t.string "team_id"
@@ -23,6 +31,7 @@ ActiveRecord::Schema.define(version: 20170810154219) do
     t.boolean "active", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "post_as"
   end
 
   create_table "webhooks", force: :cascade do |t|
